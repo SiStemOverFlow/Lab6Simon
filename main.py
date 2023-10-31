@@ -2,27 +2,15 @@
 # COP 3502C
 # Group: Simon Rigonato and Cory White
 
-def encode(password):
-    encoded_password = ""
+def encode(password):       #new password to be encoded
+    encoded_password = []   # creates list with new encoded password
     for digit in password:
         if digit.isdigit():
             encoded_digit = (int(digit) + 3) % 10
-        encoded_password += str(encoded_digit)
-    else:
-        encoded_password+= digit
-    print("Your password has been encoded and stored!")
-    print(encoded_password + "\n")
-    return encoded_password
-def decode(encoded_password):
-    decoded_password = ""
-    for digit in encoded_password:
-        if digit.isdigit():
-            decoded_digit = (int(digit) - 3) % 10
-            decoded_password += str(decoded_digit)
+            encoded_password.append(str(encoded_digit))
         else:
-            decoded_password += digit
-    print("The encoded password is" + encoded_password +
-          ", and the original password is "+ decoded_password)
+            raise ValueError("Wrong key.")
+    return ''.join(encoded_password)        #joins password
 
 def menu():
     print("Menu\n" + "-------------\n" +
@@ -30,26 +18,27 @@ def menu():
           "2. Decode\n" +
           "3. Quit\n")
 
-
-while True:
-    menu()
-    menu_choice = int(input("Please enter an option: "))
-    if menu_choice == 1:
-        password = int(input("Please enter your password to encode: "))
-        encoded_password = encode(password)
-    elif menu_choice == 2:
-        decode(encoded_password)
-
-    else:
-        exit(0)
-
-
-
-
+def main():         #puts everything into main
+    while True:
+        menu()
+        menu_choice = int(input("Please enter an option: "))
+        if menu_choice == 1:
+            global password
+            password = (input("Please enter your password to encode: "))
+            global encoded_password
+            encoded_password = encode(password)
+            print("Your password has been encoded and stored!")  # print above encoded password
+        elif menu_choice == 2:
+            print(f"The encoded password is {encoded_password}, and the original password is {password}")   #One whole function for bove
+        else:
+            exit(0)
 
 
+if __name__ == '__main__':
+    main()
 
-# if __name__ == '__main__':
+
+
     # menu()
     # menu_choice = int(input("Please enter an option: "))
     # if menu_choice == 1:
