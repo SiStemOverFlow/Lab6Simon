@@ -39,8 +39,10 @@ def main():         #puts everything into main
             print("Your password has been encoded and stored!")  # print above encoded password
         elif menu_choice == 2:
             print(f"The encoded password is {encoded_password}, and the original password is {decode(password)}")   #One whole function for bove
+        elif menu_choice == 3:
+            break
         else:
-            exit(0)
+            print("Invalid input!")
 
 
 if __name__ == '__main__':
