@@ -12,7 +12,7 @@ def encode(password):       #new password to be encoded
             raise ValueError("Wrong key.")
     return ''.join(encoded_password)        #joins password
 
-def menu():
+def menu():    #Menu goes into  main
     print("Menu\n" + "-------------\n" +
           "1. Encode\n" +
           "2. Decode\n" +
